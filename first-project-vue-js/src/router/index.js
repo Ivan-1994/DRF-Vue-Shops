@@ -8,6 +8,7 @@ import Register from '../views/Register.vue'
 import Profile from "../views/Profile";
 import CreateShop from "../views/CreateShop";
 import Users from "../views/Users";
+import ActivateUser from "../views/ActivateUser";
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ Vue.use(VueRouter);
       path: '/profile/:id',
       name: 'profile',
       component: Profile
+    },
+      {
+      path: '/activate_email/:id/:uuid',
+      name: 'ActivateUser',
+      component: ActivateUser
     },
       {
       path: '/users',

@@ -44,7 +44,6 @@ export default {
             // if (users) {
             //     data['connected_users'] = users
             // }
-            console.log(data)
             await Axios.put('http://127.0.0.1:8000/shop/' + id, data)
             .catch(err => console.log(err));
         },
@@ -54,6 +53,11 @@ export default {
                 data['name'] = name
             }
             await Axios.post('http://127.0.0.1:8000/shops/', data)
+            .catch(err => console.log(err));
+        },
+        async putSubscribeShop({dispatch, commit}, {id}) {
+            let myId = localStorage.getItem('id')
+            await Axios.put('http://127.0.0.1:8000/shop/' + id, {'connected_users': [myId]})
             .catch(err => console.log(err));
         }
 

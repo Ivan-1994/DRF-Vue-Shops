@@ -19,12 +19,12 @@ def activate_user(request, id, activate):
 class UserListViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [IsAdmin]
+    permission_classes = [IsAdmin]
 
 
 class UserViewSet(mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
                   mixins.DestroyModelMixin, viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [IsOwnerProfileOrAdmin]
+    permission_classes = [IsOwnerProfileOrAdmin]
     lookup_field = 'id'

@@ -20,7 +20,9 @@
                         <router-link class="nav-link" to="/register">Sign-up</router-link>
                     </li>
                     <li class="nav-item" v-if="checkAuth">
-                        <router-link class="nav-link" :to="{name: 'profile', params: {id: getMyProfileData.id}}">Profile</router-link>
+                        <router-link class="nav-link" :to="{name: 'profile', params: {id: getMyProfileData.id}}">
+                            Profile
+                        </router-link>
                     </li>
                     <li class="nav-item" v-if="checkAuth">
                         <router-link class="nav-link" to="/shop/create">Create Shop</router-link>
@@ -33,8 +35,8 @@
             </div>
         </nav>
         <div class="container-fluid">
-        <router-view/>
-            </div>
+            <router-view/>
+        </div>
     </div>
 </template>
 
@@ -46,7 +48,9 @@
         computed: mapGetters(['getUser', 'checkAuth', 'getMyProfileData']),
         async mounted() {
             let id = localStorage.getItem('id')
-            await this.$store.dispatch("getMyProfile", id)
+            if (id) {
+                await this.$store.dispatch("getMyProfile", id)
+            }
         },
     }
 </script>

@@ -3,6 +3,7 @@ from rest_framework import permissions
 
 class IsOwnerShopOrAdminOrRetrieve(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
+        # print(request.user.id, obj.user.id)
         if view.action == 'retrieve':
             return True
         if str(request.user) == 'AnonymousUser':

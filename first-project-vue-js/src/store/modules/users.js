@@ -47,6 +47,10 @@ export default {
             const allUsers = (await Axios.get('http://127.0.0.1:8000/users/')).data;
             ctx.commit('updateAllUser', allUsers)
         },
+        async getActivateUser(ctx, {id, uuid}) {
+            console.log(id, uuid)
+            console.log((await Axios.get('http://127.0.0.1:8000/activate_email/' + id + '/' + uuid)).data);
+        },
     },
     getters: {
         getUserProfile(state) {

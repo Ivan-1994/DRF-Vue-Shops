@@ -20,7 +20,8 @@
         name: "CreateShop",
         computed: mapGetters(['getUserProfile']),
         async mounted() {
-            await this.$store.dispatch("getProfile")
+            let id = localStorage.getItem('id')
+            await this.$store.dispatch("getProfile", id)
         },
         data() {
             return {

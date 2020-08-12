@@ -36,10 +36,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             h = hashlib.md5(bytes(self.email, encoding='utf8'))
             self.uuid = h.hexdigest()
             self.save()
-            self.email_user('Hello', f'Activate: http://127.0.0.1:8000/activate_email/{self.id}/{self.uuid}')
+            self.email_user('Hello', f'Activate: http://localhost:8080//activate_email/{self.id}/{self.uuid}')
 
     def __str__(self):
-        return self.email
+        return f'{self.email} ID {self.id}'
 
     class Meta:
         verbose_name = _('user')
